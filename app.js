@@ -22,7 +22,8 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin : '*'
+    origin : 'http://127.0.0.1:5502',
+    credentials : true
 }))
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))

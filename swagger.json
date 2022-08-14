@@ -8,6 +8,7 @@
     "produces": ["application/json"],
     "host": "localhost:8082",
     "basePath": "/",
+    
     "paths": {
       "/user/signup": {
         "post": {
@@ -15,7 +16,15 @@
           "operationId": "signup",
           "tags": ["/signup"],
           "description": "A user will be able to sign-up here",
-          "parameters": [],
+          "parameters": [
+            {
+              "name": "orderId",
+              "description": "ID of pet that needs to be fetched",
+              "required": true,
+              "type": "string",
+              "paramType": "path"
+            }
+          ],
           "responses": {}
         }
       },

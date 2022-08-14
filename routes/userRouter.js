@@ -56,13 +56,12 @@ router.put('/reset-password', (req,res) => {
 router.post('/login', (req,res) => {
     let email = req.body.email
     let password = req.body.password
-
     if(validator.validEmail(email) && validator.validPassword(password)){
         userModel.find({email:email})
         .then((data) => {
             if(data[0].password === password){
                 let token = tokenService.signToken(email)
-                res.cookie('token',token)
+                res.cookie('token',token,{ maxAge: 1000 * 60 * 10, httpOnly: true , sameSite: 'lax', path: '/', domain:'127.0.0.1'})
                 res.status(200).send(response.success('Login successful'))
             }else{
                 res.status(400).send(response.errorMessage("User name or password incorrect"))
