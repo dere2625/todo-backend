@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "TODO",
+      "description": "Back-end to the todo application",
+      "version": "1.0"
+    },
+    "produces": ["application/json"],
+    "host": "localhost:8082",
+    "basePath": "/",
+    "paths": {
+      "/signup": {
+        "post": {
+          "x-swagger-router-controller": "userRouter",
+          "operationId": "signup",
+          "tags": ["/signup"],
+          "description": "A user will be able to sign-up here",
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/login": {
+        "post": {
+          "x-swagger-router-controller": "userRouter",
+          "operationId": "login",
+          "tags": ["/login"],
+          "description": "A user will be able to Login here",
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/reset-password":{
+        "put": {
+            "x-swagger-router-controller": "userRouter",
+            "operationId": "rest-password",
+            "tags": ["/rest-password"],
+            "description": "A user will be able to Reset their password here",
+            "parameters": [],
+            "responses": {}
+          }
+      },
+
+      "/todo": {
+        "get": {
+          "x-swagger-router-controller": "todoRouter",
+          "operationId": "get-todo",
+          "tags": ["/todo"],
+          "description": "",
+          "parameters": [],
+          "responses": {}
+        }
+      }
+    }
+ }
