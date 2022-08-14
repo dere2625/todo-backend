@@ -32,10 +32,8 @@ app.use('/todo', todoRouter)
 
 
 app.use('/', (req, res) => {
-    response.status = 404
-    response.message = 'Page Not Found'
-    response.body = 'You\'ve stumbled upon a page that doesn\'t exist'
-    res.send(response)
+    
+    res.send(response.notFound())
 })
 
 app.listen(config.configuration.port, ()=>{

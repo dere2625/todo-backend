@@ -17,11 +17,7 @@ router.all('/',(req,res,next) => {
 })
 
 router.get('/', (req,res)=>{
-    response.status = 200
-    response.message = 'success'
-    response.body = 'Hello world'
-
-    res.send(response)
+    res.send(response.success('Hello world'))
 })
 
 router.post('/create', (req,res) => {

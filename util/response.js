@@ -1,9 +1,3 @@
-module.exports = {
-    status : "",
-    message : "",
-    body : ""
-}
-
 module.exports.errorMessage = (message) => {
     return {
         status : 400,
@@ -33,5 +27,13 @@ module.exports.unauthorized = () => {
         status : 401,
         message : 'Error',
         body : 'Unauthorized'
+    }
+}
+
+module.exports.notFound = () => {
+    return {
+        status : 404,
+        message : 'Not Found',
+        body : 'You\'ve stumbled upon a page that doesn\'t exist'
     }
 }
