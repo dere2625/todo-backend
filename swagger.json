@@ -9,7 +9,7 @@
     "host": "localhost:8082",
     "basePath": "/",
     "paths": {
-      "/signup": {
+      "/user/signup": {
         "post": {
           "x-swagger-router-controller": "userRouter",
           "operationId": "signup",
@@ -19,7 +19,7 @@
           "responses": {}
         }
       },
-      "/login": {
+      "/user/login": {
         "post": {
           "x-swagger-router-controller": "userRouter",
           "operationId": "login",
@@ -29,7 +29,7 @@
           "responses": {}
         }
       },
-      "/reset-password":{
+      "/user/reset-password":{
         "put": {
             "x-swagger-router-controller": "userRouter",
             "operationId": "rest-password",
@@ -45,7 +45,27 @@
           "x-swagger-router-controller": "todoRouter",
           "operationId": "get-todo",
           "tags": ["/todo"],
-          "description": "",
+          "description": "Gets all todo items belonging to a user",
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/todo/create": {
+        "post": {
+          "x-swagger-router-controller": "todoRouter",
+          "operationId": "create-todo",
+          "tags": ["/todo/create"],
+          "description": "Creates a todo item",
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/todo/summary": {
+        "get": {
+          "x-swagger-router-controller": "todoRouter",
+          "operationId": "get-summary",
+          "tags": ["/todo/summary"],
+          "description": "Gets summary of tasks by status",
           "parameters": [],
           "responses": {}
         }
