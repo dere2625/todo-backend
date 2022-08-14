@@ -1,6 +1,11 @@
 const { default: mongoose, mongo } = require("mongoose");
 
 const todoSchema = new mongoose.Schema({
+    user : {
+        type : String,
+        required : true
+    },
+    
     title : {
         type : String,
         required : true
@@ -15,6 +20,10 @@ const todoSchema = new mongoose.Schema({
     },
     status : {
         type : String,
+        required : true
+    },
+    createdDate : {
+        type : Date,
         required : true
     },
     dueDate : {
