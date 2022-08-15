@@ -26,7 +26,17 @@ router.get('/', (req,res)=>{
         console.log(err)
         res.status(500).send(response.serverError())
     })
-    
+})
+
+router.get('/:id', (req,res)=>{
+    let user = tokenService.getTokenData(req.cookies.token)
+    let id = req.params.id
+    todo.find({user: user,_id:id}).then(data => {
+        res.send(data)
+    }).catch(err => {
+        console.log(err)
+        res.status(500).send(response.serverError())
+    })
 })
 
 router.get('/summary', (req,res)=>{
@@ -52,6 +62,7 @@ router.get('/summary', (req,res)=>{
 })
 
 router.post('/create', (req,res) => {
+    console.log(req);
     let todoDocument = new todo()
     todoDocument.title = req.body.title
     todoDocument.user = tokenService.getTokenData(req.cookies.token)
@@ -77,8 +88,41 @@ router.put('/update', (req,res) => {
 
 })
 
-router.delete('/delete', (req,res) => {
-    
+router.delete('/archive/:id', (req,res) => {
+    let id = req.params.id
+    todo.updateOne({_id: id}, {status : 'Archived'})
+    .then((data) => {
+        res.status(200).send(response.success('Todo Archived'))
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).send(response.serverError())
+    })
+
+})
+
+router.get('/complete/:id', (req,res) => {
+    let id = req.params.id
+    todo.updateOne({_id: id}, {status : 'Completed'})
+    .then((data) => {
+        res.status(200).send(response.success('Task Completed'))
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).send(response.serverError())
+    })
+})
+
+router.get('/uncomplete/:id', (req,res) => {
+    let id = req.params.id
+    todo.updateOne({_id: id}, {status : 'Pending'})
+    .then((data) => {
+        res.status(200).send(response.success('Task Pending'))
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).send(response.serverError())
+    })
 })
 
 module.exports = router;

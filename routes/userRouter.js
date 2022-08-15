@@ -61,7 +61,7 @@ router.post('/login', (req,res) => {
         .then((data) => {
             if(data[0].password === password){
                 let token = tokenService.signToken(email)
-                res.cookie('token',token,{ maxAge: 1000 * 60 * 10, httpOnly: true , sameSite: 'lax', path: '/', domain:'127.0.0.1'})
+                res.cookie('token',token,{ maxAge: 24 * 1000 * 60 * 10, httpOnly: true , sameSite: 'lax', path: '/', domain:'127.0.0.1'})
                 res.status(200).send(response.success('Login successful'))
             }else{
                 res.status(400).send(response.errorMessage("User name or password incorrect"))
