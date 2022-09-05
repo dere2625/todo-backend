@@ -28,7 +28,7 @@ router.get('/', (req,res)=>{
     })
 })
 
-router.get('/:id', (req,res)=>{
+router.get('one/:id', (req,res)=>{
     let user = tokenService.getTokenData(req.cookies.token)
     let id = req.params.id
     todo.find({user: user,_id:id}).then(data => {
